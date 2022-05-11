@@ -39,7 +39,7 @@ def mul_time(t1, factor):
 
 def days_until_birthday(birthday):
     """How long until my next birthday?"""
-    today = datetime.today()
+    today = datetime.now()
     # when is my birthday this year?
     next_birthday = datetime(today.year, birthday.month, birthday.day)
 
@@ -60,15 +60,14 @@ def double_day(b1, b2):
     """
     assert b1 > b2
     delta = b1 - b2
-    dday = b1 + delta
-    return dday
+    return b1 + delta
 
 
 def datetime_exercises():
     """Exercise solutions."""
 
     # print today's day of the week
-    today = datetime.today()
+    today = datetime.now()
     print(today.weekday())
     print(today.strftime('%A'))
 

@@ -48,7 +48,7 @@ def main():
     hist = process_file('158-0.txt', skip_header=True)
 
     print("\n\nHere are some random words from the book")
-    for i in range(100):
+    for _ in range(100):
         print(random_word(hist), end=' ')
 
 

@@ -17,7 +17,7 @@ from pronounce import read_dictionary
 def make_word_dict():
     """Read. the words in words.txt and return a dictionary
     that contains the words as keys."""
-    d = dict()
+    d = {}
     fin = open('words.txt')
     for line in fin:
         word = line.strip().lower()
@@ -34,10 +34,7 @@ def homophones(a, b, phonetic):
     a, b: strings
     phonetic: map from words to pronunciation codes
     """
-    if a not in phonetic or b not in phonetic:
-        return False
-
-    return phonetic[a] == phonetic[b]
+    return phonetic[a] == phonetic[b] if a in phonetic and b in phonetic else False
 
 
 def check_word(word, word_dict, phonetic):

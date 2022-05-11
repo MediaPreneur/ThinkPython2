@@ -76,7 +76,7 @@ class Markov:
 
         for i in range(n):
             suffixes = self.suffix_map.get(start, None)
-            if suffixes == None:
+            if suffixes is None:
                 # if the prefix isn't in map, we got to the end of the
                 # original text, so we have to start again.
                 self.random_text(n-i)

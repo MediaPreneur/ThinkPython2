@@ -32,8 +32,7 @@ class Card:
 
     def __str__(self):
         """Returns a human-readable string representation."""
-        return '%s of %s' % (Card.rank_names[self.rank],
-                             Card.suit_names[self.suit])
+        return f'{Card.rank_names[self.rank]} of {Card.suit_names[self.suit]}'
 
     def __eq__(self, other):
         """Checks whether self and other have the same rank and suit.
@@ -71,9 +70,7 @@ class Deck:
     def __str__(self):
         """Returns a string representation of the deck.
         """
-        res = []
-        for card in self.cards:
-            res.append(str(card))
+        res = [str(card) for card in self.cards]
         return '\n'.join(res)
 
     def add_card(self, card):
@@ -111,7 +108,7 @@ class Deck:
         hand: destination Hand object
         num: integer number of cards to move
         """
-        for i in range(num):
+        for _ in range(num):
             hand.add_card(self.pop_card())
 
 
@@ -131,10 +128,7 @@ def find_defining_class(obj, method_name):
     obj: any python object
     method_name: string method name
     """
-    for ty in type(obj).mro():
-        if method_name in ty.__dict__:
-            return ty
-    return None
+    return next((ty for ty in type(obj).mro() if method_name in ty.__dict__), None)
 
 
 if __name__ == '__main__':

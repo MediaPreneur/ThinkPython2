@@ -17,7 +17,7 @@ from rotate import rotate_word
 def make_word_dict():
     """Read the words in words.txt and return a dictionary
     that contains the words as keys"""
-    d = dict()
+    d = {}
     fin = open('words.txt')
     for line in fin:
         word = line.strip().lower()

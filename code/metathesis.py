@@ -35,12 +35,7 @@ def word_distance(word1, word2):
     """
     assert len(word1) == len(word2)
 
-    count = 0
-    for c1, c2 in zip(word1, word2):
-        if c1 != c2:
-            count += 1
-
-    return count
+    return sum(c1 != c2 for c1, c2 in zip(word1, word2))
 
 
 if __name__ == '__main__':

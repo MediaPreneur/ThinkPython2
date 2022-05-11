@@ -77,10 +77,7 @@ def most_common(hist):
 
     returns: list of (frequency, word) pairs
     """
-    t = []
-    for key, value in hist.items():
-        t.append((value, key))
-
+    t = [(value, key) for key, value in hist.items()]
     t.sort()
     t.reverse()
     return t
@@ -103,12 +100,7 @@ def subtract(d1, d2):
 
     d1, d2: dictionaries
     """
-    # TODO: reimplement using Counter
-    res = {}
-    for key in d1:
-        if key not in d2:
-            res[key] = None
-    return res
+    return {key: None for key in d1 if key not in d2}
 
 
 def total_words(hist):
@@ -141,7 +133,7 @@ def main():
 
     t = most_common(hist)
     print('The most common words are:')
-    for freq, word in t[0:20]:
+    for freq, word in t[:20]:
         print(word, '\t', freq)
 
     words = process_file('words.txt', skip_header=False)
@@ -152,7 +144,7 @@ def main():
         print(word, end=' ')
 
     print("\n\nHere are some random words from the book")
-    for i in range(100):
+    for _ in range(100):
         print(random_word(hist), end=' ')
 
 

@@ -16,7 +16,7 @@ from datetime import datetime
 
 def main():
     print("Today's date and the day of the week:")
-    today = datetime.today()
+    today = datetime.now()
     print(today)
     print(today.strftime("%A"))
 

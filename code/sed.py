@@ -23,21 +23,19 @@ def sed(pattern, replace, source, dest):
     dest: string filename
     """
     fin = open(source, 'r')
-    fout = open(dest, 'w')
+    with open(dest, 'w') as fout:
+        for line in fin:
+            line = line.replace(pattern, replace)
+            fout.write(line)
 
-    for line in fin:
-        line = line.replace(pattern, replace)
-        fout.write(line)
-
-    fin.close()
-    fout.close()
+        fin.close()
 
 
 def main():
     pattern = 'pattern'
     replace = 'replace'
     source = 'sed_tester.txt'
-    dest = source + '.replaced'
+    dest = f'{source}.replaced'
     sed(pattern, replace, source, dest)
 
 

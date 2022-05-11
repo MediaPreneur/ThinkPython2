@@ -23,7 +23,7 @@ def read_dictionary(filename='c06d'):
     filename: string
     returns: map from string to pronunciation
     """
-    d = dict()
+    d = {}
     fin = open(filename)
     for line in fin:
 

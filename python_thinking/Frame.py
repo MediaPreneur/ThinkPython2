@@ -28,7 +28,7 @@ class Vector:
         self.frame = frame
 
     def __str__(self):
-        if self.frame == None:
+        if self.frame is None:
             return '^{O}%s' % (str(self.array), )
         else:
             return '^{%s}%s' % (str(self.frame), str(self.array))
@@ -105,9 +105,8 @@ class Transform:
 
     def __str__(self):
         """Returns a string representation of the Transform."""
-        if self.dest == None:
-            return '%s' % self.source.name
-            return '_{%s}^{O}T' % self.source.name
+        if self.dest is None:
+            return f'{self.source.name}'
         else:
             return '_{%s}^{%s}T' % (self.source.name, self.dest.name)
             
@@ -145,8 +144,7 @@ class Transform:
                 "This frames source must be the other frame's destination.")
 
         rot = Rotation(self.rot * other.rot)
-        t = Transform(rot, self * other.org, other.source)
-        return t
+        return Transform(rot, self * other.org, other.source)
 
     def inverse(self):
         """Computes the inverse transform.
@@ -155,8 +153,7 @@ class Transform:
         """
         irot = self.rot.inverse()
         iorg = Vector(-(irot * self.org), self.source)
-        t = Transform(irot, iorg, self.dest)
-        return t
+        return Transform(irot, iorg, self.dest)
 
 
 class Frame:

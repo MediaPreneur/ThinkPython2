@@ -37,11 +37,9 @@ def check(i):
 def check_all():
     """Enumerate the six-digit numbers and print any winners.
     """
-    i = 100000
-    while i <= 999996:
+    for i in range(100000, 999997):
         if check(i):
             print(i)
-        i = i + 1
 
 
 print('The following are the possible odometer readings:')

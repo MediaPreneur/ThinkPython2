@@ -18,10 +18,8 @@ def factorial(n):
     """Computes factorial of n recursively."""
     if n == 0:
         return 1
-    else:
-        recurse = factorial(n-1)
-        result = n * recurse
-        return result
+    recurse = factorial(n-1)
+    return n * recurse
 
 
 def estimate_pi():

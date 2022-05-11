@@ -40,9 +40,7 @@ class BetterMap:
 
     def __init__(self, n=100):
         """Appends (n) LinearMaps onto (self)."""
-        self.maps = []
-        for i in range(n):
-            self.maps.append(LinearMap())
+        self.maps = [LinearMap() for _ in range(n)]
 
     def find_map(self, k):
         """Finds the right LinearMap for key (k)."""

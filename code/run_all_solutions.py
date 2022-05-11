@@ -69,6 +69,6 @@ for filename in filenames.split():
         print('Skipping')
         continue
 
-    res, stat = pipe('python ' + filename)
+    res, stat = pipe(f'python {filename}')
     print(stat)
 

@@ -60,13 +60,13 @@ class index(Base.Command):
         self.ownerDocument.context.label(idgen.next(), self)
         p0,p1,s0,s1 = self.setEntry(self.attributes['termstring'])
         if p0:
-            self.prisort = '%s' % p0
+            self.prisort = f'{p0}'
         if p1:
-            self.primary = '%s' % p1
+            self.primary = f'{p1}'
         if s0:
-            self.secsort = '%s' % s0
+            self.secsort = f'{s0}'
         if s1:
-            self.secondary = '%s' % s1
+            self.secondary = f'{s1}'
 
 class scriptN(Base.Command):
        unicode = u'\U0001D4A9'

@@ -64,10 +64,7 @@ class PokerHand(Hand):
 
         t: list of int
         """
-        for need, have in zip(t, self.sets):
-            if need > have:
-                return False
-        return True
+        return all(need <= have for need, have in zip(t, self.sets))
 
     def has_pair(self):
         """Checks whether this hand has a pair."""
@@ -91,10 +88,7 @@ class PokerHand(Hand):
 
     def has_flush(self):
         """Checks whether this hand has a flush."""
-        for val in self.suits.values():
-            if val >= 5:
-                return True
-        return False
+        return any(val >= 5 for val in self.suits.values())
 
     def has_straight(self):
         """Checks whether this hand has a straight."""
@@ -177,7 +171,7 @@ class PokerHand(Hand):
 
         self.labels = []
         for label in PokerHand.all_labels:
-            f = getattr(self, 'has_' + label)
+            f = getattr(self, f'has_{label}')
             if f():
                 self.labels.append(label)
 
@@ -194,7 +188,7 @@ class PokerDeck(Deck):
         returns: list of Hands
         """
         hands = []
-        for i in range(num_hands):        
+        for _ in range(num_hands):
             hand = PokerHand()
             self.move_cards(hand, num_cards)
             hand.classify()

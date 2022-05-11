@@ -35,7 +35,7 @@ class Time:
 
     def print_time(self):
         """Prints a string representation of the time."""
-        print(str(self))
+        print(self)
 
     def time_to_int(self):
         """Computes the number of seconds since midnight."""

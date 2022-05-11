@@ -40,7 +40,7 @@ def compute_checksum(filename):
     """
     # Note: installing md5sha1sum is required
 
-    cmd = 'md5sum ' + filename
+    cmd = f'md5sum {filename}'
     return pipe(cmd)
 
 
@@ -49,7 +49,7 @@ def check_diff(name1, name2):
 
     name1, name2: string filenames
     """
-    cmd = 'diff %s %s' % (name1, name2)
+    cmd = f'diff {name1} {name2}'
     return pipe(cmd)
 
 

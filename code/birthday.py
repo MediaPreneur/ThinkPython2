@@ -25,11 +25,7 @@ def has_duplicates(t):
     s = t[:]
     s.sort()
 
-    # check for adjacent elements that are equal
-    for i in range(len(s)-1):
-        if s[i] == s[i+1]:
-            return True
-    return False
+    return any(s[i] == s[i+1] for i in range(len(s)-1))
 
 
 def random_bdays(n):
@@ -40,7 +36,7 @@ def random_bdays(n):
     returns: list of int
     """
     t = []
-    for i in range(n):
+    for _ in range(n):
         bday = random.randint(1, 365)
         t.append(bday)
     return t
@@ -55,7 +51,7 @@ def count_matches(num_students, num_simulations):
     returns: int
     """
     count = 0
-    for i in range(num_simulations):
+    for _ in range(num_simulations):
         t = random_bdays(num_students)
         if has_duplicates(t):
             count += 1

@@ -32,10 +32,7 @@ class PokerHand(Hand):
         Note that this works correctly for hands with more than 5 cards.
         """
         self.suit_hist()
-        for val in self.suits.values():
-            if val >= 5:
-                return True
-        return False
+        return any(val >= 5 for val in self.suits.values())
 
 
 if __name__ == '__main__':
@@ -44,7 +41,7 @@ if __name__ == '__main__':
     deck.shuffle()
 
     # deal the cards and classify the hands
-    for i in range(7):
+    for _ in range(7):
         hand = PokerHand()
         deck.move_cards(hand, 7)
         hand.sort()

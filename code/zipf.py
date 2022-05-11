@@ -29,9 +29,7 @@ def rank_freq(hist):
     freqs = list(hist.values())
     freqs.sort(reverse=True)
 
-    # enumerate the ranks and frequencies 
-    rf = [(r+1, f) for r, f in enumerate(freqs)]
-    return rf
+    return [(r+1, f) for r, f in enumerate(freqs)]
 
 
 def print_ranks(hist):

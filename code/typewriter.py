@@ -59,7 +59,7 @@ def keypress(char):
 
     # figure out which function to call, and call it
     try:
-        name = 'draw_' + char
+        name = f'draw_{char}'
         func = getattr(letters, name)
     except AttributeError:
         print("I don't know how to draw an", char)

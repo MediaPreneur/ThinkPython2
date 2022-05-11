@@ -36,7 +36,7 @@ def polypie(t, n, r):
     r: length of the radial spokes
     """
     angle = 360.0 / n
-    for i in range(n):
+    for _ in range(n):
         isosceles(t, r, angle/2)
         t.lt(angle)
 

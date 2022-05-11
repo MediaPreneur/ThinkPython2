@@ -44,8 +44,7 @@ def time_to_int(time):
     time: Time object.
     """
     minutes = time.hour * 60 + time.minute
-    seconds = minutes * 60 + time.second
-    return seconds
+    return minutes * 60 + time.second
 
 
 def add_times(t1, t2):

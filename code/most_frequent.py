@@ -21,17 +21,10 @@ def most_frequent(s):
     """
     hist = make_histogram(s)
 
-    t = []
-    for x, freq in hist.items():
-        t.append((freq, x))
-
+    t = [(freq, x) for x, freq in hist.items()]
     t.sort(reverse=True)
 
-    res = []
-    for freq, x in t:
-        res.append(x)
-
-    return res
+    return [x for freq, x in t]
     
 
 def make_histogram(s):

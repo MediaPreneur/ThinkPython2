@@ -30,13 +30,10 @@ def structshape(ds):
     # handle sequences
     sequence = (list, tuple, set, type(iter('')))
     if isinstance(ds, sequence):
-        t = []
-        for i, x in enumerate(ds):
-            t.append(structshape(x))
-        rep = '%s of %s' % (typename, listrep(t))
+        t = [structshape(x) for x in ds]
+        rep = f'{typename} of {listrep(t)}'
         return rep
 
-    # handle dictionaries
     elif isinstance(ds, dict):
         keys = set()
         vals = set()
@@ -47,12 +44,8 @@ def structshape(ds):
                                    setrep(keys), setrep(vals))
         return rep
 
-    # handle other types
     else:
-        if hasattr(ds, '__class__'):
-            return ds.__class__.__name__
-        else:
-            return typename
+        return ds.__class__.__name__ if hasattr(ds, '__class__') else typename
 
 
 def listrep(t):
@@ -84,11 +77,7 @@ def setrep(s):
     Returns: string
     """
     rep = ', '.join(s)
-    if len(s) == 1:
-        return rep
-    else:
-        return '(' + rep + ')'
-    return 
+    return rep if len(s) == 1 else f'({rep})' 
 
 
 def append(res, typestr, count):
@@ -102,10 +91,7 @@ def append(res, typestr, count):
 
     Returns: None
     """
-    if count == 1:
-        rep = typestr
-    else:
-        rep = '%d %s' % (count, typestr)
+    rep = typestr if count == 1 else '%d %s' % (count, typestr)
     res.append(rep)
 
 

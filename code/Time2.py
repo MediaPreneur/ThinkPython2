@@ -34,13 +34,12 @@ class Time:
 
     def print_time(self):
         """Prints a string representation of the time."""
-        print(str(self))
+        print(self)
 
     def time_to_int(self):
         """Computes the number of seconds since midnight."""
         minutes = self.hour * 60 + self.minute
-        seconds = minutes * 60 + self.second
-        return seconds
+        return minutes * 60 + self.second
 
     def is_after(self, other):
         """Returns True if t1 is after t2; false otherwise."""
@@ -87,8 +86,7 @@ def int_to_time(seconds):
     """
     minutes, second = divmod(seconds, 60)
     hour, minute = divmod(minutes, 60)
-    time = Time(hour, minute, second)
-    return time
+    return Time(hour, minute, second)
 
 
 def main():

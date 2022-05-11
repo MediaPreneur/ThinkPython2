@@ -24,16 +24,10 @@ def sort_by_length(words):
 
     Returns: list of strings
     """
-    t = []
-    for word in words:
-        t.append((len(word), word))
-
+    t = [(len(word), word) for word in words]
     t.sort(reverse=True)
 
-    res = []
-    for length, word in t:
-        res.append(word)
-    return res
+    return [word for length, word in t]
 
 
 def sort_by_length_random(words):
@@ -51,16 +45,10 @@ def sort_by_length_random(words):
 
     Returns: list of strings
     """
-    t = []
-    for word in words:
-        t.append((len(word), random.random(), word))
-
+    t = [(len(word), random.random(), word) for word in words]
     t.sort(reverse=True)
 
-    res = []
-    for length, _, word in t:
-        res.append(word)
-    return res
+    return [word for length, _, word in t]
 
 
 if __name__ == '__main__':

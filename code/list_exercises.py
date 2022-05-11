@@ -21,10 +21,7 @@ def nested_sum(t):
 
     returns: number
     """
-    total = 0
-    for nested in t:
-        total += sum(nested)
-    return total
+    return sum(sum(nested) for nested in t)
 
 
 def cumsum(t):
@@ -91,15 +88,8 @@ def has_duplicates(s):
 
     returns: bool
     """
-    # make a copy of t to avoid modifying the parameter
-    t = list(s)
-    t.sort()
-
-    # check for adjacent elements that are equal
-    for i in range(len(t)-1):
-        if t[i] == t[i+1]:
-            return True
-    return False
+    t = sorted(s)
+    return any(t[i] == t[i+1] for i in range(len(t)-1))
 
 
 def main():

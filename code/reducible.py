@@ -14,7 +14,7 @@ from __future__ import print_function, division
 
 def make_word_dict():
     """Reads a word list and returns a dictionary."""
-    d = dict()
+    d = {}
     fin = open('words.txt')
     for line in fin:
         word = line.strip().lower()
@@ -31,8 +31,8 @@ def make_word_dict():
 to be reducible to a list of its reducible children.  It starts
 with the empty string."""
 
-memo = {}
-memo[''] = ['']
+
+memo = {'': ['']}
 
 
 def is_reducible(word, word_dict):
@@ -51,10 +51,11 @@ def is_reducible(word, word_dict):
         return memo[word]
 
     # check each of the children and make a list of the reducible ones
-    res = []
-    for child in children(word, word_dict):
-        if is_reducible(child, word_dict):
-            res.append(child)
+    res = [
+        child
+        for child in children(word, word_dict)
+        if is_reducible(child, word_dict)
+    ]
 
     # memoize and return the result
     memo[word] = res
@@ -111,13 +112,11 @@ def print_longest_words(word_dict):
     words = all_reducible(word_dict)
 
     # use DSU to sort by word length
-    t = []
-    for word in words:
-        t.append((len(word), word))
+    t = [(len(word), word) for word in words]
     t.sort(reverse=True)
 
     # print the longest 5 words
-    for _, word in t[0:5]:
+    for _, word in t[:5]:
         print_trail(word)
         print('\n')
 

@@ -40,10 +40,7 @@ def rotate_word(word, n):
 
     Returns: string
     """
-    res = ''
-    for letter in word:
-        res += rotate_letter(letter, n)
-    return res
+    return ''.join(rotate_letter(letter, n) for letter in word)
 
 
 if __name__ == '__main__':

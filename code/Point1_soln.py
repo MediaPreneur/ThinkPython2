@@ -27,8 +27,7 @@ def distance_between_points(p1, p2):
     """
     dx = p1.x - p2.x
     dy = p1.y - p2.y
-    dist = math.sqrt(dx**2 + dy**2)
-    return dist
+    return math.sqrt(dx**2 + dy**2)
 
 
 def move_rectangle(rect, dx, dy):

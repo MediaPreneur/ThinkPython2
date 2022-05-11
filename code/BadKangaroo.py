@@ -34,9 +34,9 @@ class Kangaroo:
     def __str__(self):
         """Return a string representaion of this Kangaroo.
         """
-        t = [ self.name + ' has pouch contents:' ]
+        t = [f'{self.name} has pouch contents:']
         for obj in self.pouch_contents:
-            s = '    ' + object.__str__(obj)
+            s = f'    {object.__str__(obj)}'
             t.append(s)
         return '\n'.join(t)
 

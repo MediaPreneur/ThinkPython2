@@ -68,12 +68,10 @@ def check_diffs():
     over their lives they will have ages that are the reverse of
     each other.
     """
-    diff = 10
-    while diff < 70:
+    for diff in range(10, 70):
         n = num_instances(diff)
         if n > 0:
             print(diff, n)
-        diff = diff + 1
 
 print('diff  #instances')
 check_diffs()

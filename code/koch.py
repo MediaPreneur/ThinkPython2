@@ -31,7 +31,7 @@ def koch(t, n):
 
 def snowflake(t, n):
     """Draws a snowflake (a triangle with a Koch curve for each side)."""
-    for i in range(3):
+    for _ in range(3):
         koch(t, n)
         t.rt(120)
 

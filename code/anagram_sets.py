@@ -19,9 +19,7 @@ def signature(s):
 
     s: string
     """
-    # TODO: rewrite using sorted()
-    t = list(s)
-    t.sort()
+    t = sorted(s)
     t = ''.join(t)
     return t
 
@@ -62,11 +60,7 @@ def print_anagram_sets_in_order(d):
     d: map from words to list of their anagrams
     """
     # make a list of (length, word pairs)
-    t = []
-    for v in d.values():
-        if len(v) > 1:
-            t.append((len(v), v))
-
+    t = [(len(v), v) for v in d.values() if len(v) > 1]
     # sort in ascending order of length
     t.sort()
 
@@ -83,11 +77,7 @@ def filter_length(d, n):
 
     returns: new map from word to list of anagrams
     """
-    res = {}
-    for word, anagrams in d.items():
-        if len(word) == n:
-            res[word] = anagrams
-    return res
+    return {word: anagrams for word, anagrams in d.items() if len(word) == n}
 
 
 if __name__ == '__main__':
